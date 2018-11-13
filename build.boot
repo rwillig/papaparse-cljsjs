@@ -11,6 +11,7 @@
   (str "https://github.com/mholt/PapaParse/archive/" +lib-version+ ".tar.gz"))
 
 (task-options!
+  ;; Note change this from cljsjs to adzerk or something else before pushing to clojars
   pom  {:project     'cljsjs/papaparse
         :version     +version+
         :description "Fast and powerful CSV (delimited text) parser that gracefully handles large files and malformed input"
@@ -28,6 +29,7 @@
    (sift :move {#"^PapaParse-.*/papaparse.js" "cljsjs/papaparse/development/papaparse.inc.js"
                 #"^PapaParse-.*/papaparse.min.js" "cljsjs/papaparse/production/papaparse.min.inc.js"})
    (sift :include #{#"^cljsjs"})
+  ;; Note change this from cljsjs to adzerk or something else before pushing to clojars
    (deps-cljs :name "cljsjs.papaparse")
    (pom)
    (jar)))
