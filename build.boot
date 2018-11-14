@@ -1,3 +1,4 @@
+;; making this an adzerk artifact becauae cljsjs doesn't currently have this version of papaparse
 (set-env!
   :resource-paths #{"resources"}
   :dependencies '[[cljsjs/boot-cljsjs "0.10.3" :scope "test"]])
@@ -11,8 +12,7 @@
   (str "https://github.com/mholt/PapaParse/archive/" +lib-version+ ".tar.gz"))
 
 (task-options!
-  ;; Note change this from cljsjs to adzerk or something else before pushing to clojars
-  pom  {:project     'cljsjs/papaparse
+  pom  {:project     'adzerk/papaparse
         :version     +version+
         :description "Fast and powerful CSV (delimited text) parser that gracefully handles large files and malformed input"
         :url         "http://PapaParse.com"
@@ -29,7 +29,6 @@
    (sift :move {#"^PapaParse-.*/papaparse.js" "cljsjs/papaparse/development/papaparse.inc.js"
                 #"^PapaParse-.*/papaparse.min.js" "cljsjs/papaparse/production/papaparse.min.inc.js"})
    (sift :include #{#"^cljsjs"})
-  ;; Note change this from cljsjs to adzerk or something else before pushing to clojars
-   (deps-cljs :name "cljsjs.papaparse")
+   (deps-cljs :name "adzerk.papaparse")
    (pom)
    (jar)))
